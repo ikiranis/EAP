@@ -2,8 +2,7 @@
  *
  * File: test_pointers.c
  *
- * Created by Yiannis Kiranis <rocean74@gmail.com>
- * http://www.apps4net.eu
+ * Created by Yiannis Kiranis <std138327@ac.eap.gr>
  *
  * Date: 2019-01-16
  * Time: 17:38
