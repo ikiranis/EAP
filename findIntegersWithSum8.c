@@ -27,9 +27,9 @@ int main()
 
     maxSearchLimit = TARGET_SUM - 3;
 
-    for(a=1; a<maxSearchLimit; a++) {
-        for(b=1; b<maxSearchLimit; b++) {
-            for(c=1; c<maxSearchLimit; c++) {
+    for(a=1; a<=maxSearchLimit; a++) {
+        for(b=1; b<=maxSearchLimit; b++) {
+            for(c=1; c<=maxSearchLimit; c++) {
                 sum = a + b + c;
 
                 if(sum == TARGET_SUM) {
