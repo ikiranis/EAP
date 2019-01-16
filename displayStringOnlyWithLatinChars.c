@@ -48,7 +48,8 @@ int main()
 
     for(i=0; i<50; i++) {
         if(charsFrequency[i] != 0) {
-            printf("%c -> %d\n", i + getCharAsciiNumberDifference(i), charsFrequency[i]);
+            printf("%c (%d) -> %d\n", i + getCharAsciiNumberDifference(i), getCharAsciiNumberDifference(i) + i,
+                    charsFrequency[i]);
         }
     }
 
@@ -65,7 +66,7 @@ int main()
 int getCharAsciiNumberDifference(int theChar)
 {
     if(theChar>=65 && theChar<=90) {
-        return 65;
+        return 66;
     } else {
         return 73;
     }
