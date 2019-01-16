@@ -16,7 +16,7 @@
 
 #include <stdio.h>
 
-#define TARGET_SUM 18
+#define TARGET_SUM 8
 
 int main()
 {
@@ -25,7 +25,7 @@ int main()
     int sum;
     int maxSearchLimit;
 
-    maxSearchLimit = TARGET_SUM - 3;
+    maxSearchLimit = TARGET_SUM - 2;
 
     for(a=1; a<=maxSearchLimit; a++) {
         for(b=1; b<=maxSearchLimit; b++) {
