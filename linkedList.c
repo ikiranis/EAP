@@ -33,7 +33,7 @@ DataElementType insertAtStart(myStruct **head, DataElementType data)
         newNode->next = NULL;
         *head = newNode;
     } else {
-        newNode->next = (*head)->next;
+        newNode->next = (*head);
         *head = newNode;
     }
 
@@ -61,8 +61,6 @@ int main()
     insertAtStart(&head, 40);
     insertAtStart(&head, 5);
     insertAtStart(&head, 12);
-
-
 
     displayList(&head);
 
