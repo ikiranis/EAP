@@ -15,13 +15,22 @@
 #include <stdlib.h>
 
 typedef int DataElementType;
+const char DETERMINANT[] = "%d ";
 
+// Main node structure
 typedef struct list {
     DataElementType data;
     struct list *next;
 } myStruct;
 
 
+/**
+ * Insert new node at the start of the list
+ *
+ * @param head
+ * @param data
+ * @return
+ */
 DataElementType insertAtStart(myStruct **head, DataElementType data)
 {
     myStruct *newNode;
@@ -40,12 +49,17 @@ DataElementType insertAtStart(myStruct **head, DataElementType data)
     return 1;
 }
 
+/**
+ * Display list items
+ *
+ * @param head
+ */
 void displayList(myStruct **head)
 {
     myStruct *current = *head;
 
     while(current!=NULL) {
-        printf("%d ", current->data);
+        printf(DETERMINANT, current->data);
         current = current->next;
     }
 
