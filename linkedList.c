@@ -120,7 +120,7 @@ int deleteNodeFromNPosition(myStruct **head, int nPosition)
         currentPosition++;
     }
 
-    // Delete the node
+    // Delete the node. Previous node points to next of the current
     previous->next = current->next;
     free(current);
 
