@@ -34,15 +34,16 @@ typedef struct list {
 int insertAtStart(myStruct **head, DataElementType data) {
     myStruct *newNode;
 
+    // Create new node and allocate memory
     newNode = (myStruct *) malloc(sizeof(myStruct));
     newNode->data = data;
 
-    if (*head == NULL) {
-        newNode->next = NULL;
-        *head = newNode;
+    if (*head == NULL) { // If the list is empty
+        newNode->next = NULL; // New node points to NULL (end of list)
+        *head = newNode; // Head points to new node
     } else {
-        newNode->next = (*head);
-        *head = newNode;
+        newNode->next = (*head); // New node points to past head (first item)
+        *head = newNode; // Current head points to new node
     }
 
     return 1;
@@ -59,18 +60,20 @@ int insertAtTheEnd(myStruct **head, DataElementType data)
 {
     myStruct *newNode, *current = *head;
 
+    // Create new node and allocate memory
     newNode = (myStruct *) malloc(sizeof(myStruct));
     newNode->data = data;
 
-    if(*head==NULL) {
-        newNode->next = NULL;
-        *head = newNode;
+    if(*head==NULL) { // If the list is empty
+        newNode->next = NULL; // New node points to NULL (end of list)
+        *head = newNode; // Head points to new node
     } else {
-        while (current->next != NULL) {
+        while (current->next != NULL) { // Go to the end of the list
             current = current->next;
         }
-        newNode->next = NULL;
-        current->next = newNode;
+
+        newNode->next = NULL;  // New node points to NULL (end of list)
+        current->next = newNode; // Past last node points to new node
     }
 
     return 1;
@@ -85,9 +88,10 @@ void displayList(myStruct **head)
 {
     myStruct *current = *head;
 
+    // Scan all the list nodes until the end (NULL)
     while(current!=NULL) {
-        printf(DETERMINANT, current->data);
-        current = current->next;
+        printf(DETERMINANT, current->data); // Print data of current node
+        current = current->next; // Go to the next node
     }
 
     printf("\n");
