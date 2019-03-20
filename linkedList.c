@@ -145,7 +145,7 @@ int deleteNodeFromNPosition(myStruct **head, int nPosition)
  */
 int searchElementAndDeleteNode(myStruct **head, DataElementType hay)
 {
-    myStruct *current = *head, *next, *previous = *head;
+    myStruct *current = *head, *previous = *head;
 
     if(*head==NULL) {
         return 0;
@@ -159,8 +159,12 @@ int searchElementAndDeleteNode(myStruct **head, DataElementType hay)
 
     // If element founded
     if(current->data == hay) {
-        // Previous point to next node of current and delete current
-        previous->next = current->next;
+        // Previous points to next node of current and delete current
+        if(previous == current) { // If we are in first node
+            *head = current->next;
+        } else {
+            previous->next = current->next;
+        }
         free(current);
     }
 
@@ -185,7 +189,7 @@ int main()
     displayList(&head);
 
 //    deleteNodeFromNPosition();
-    searchElementAndDeleteNode(&head, 21);
+    searchElementAndDeleteNode(&head, 24);
 
     displayList(&head);
 
