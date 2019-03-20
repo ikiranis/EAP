@@ -106,7 +106,7 @@ void displayList(myStruct **head)
  */
 int deleteNodeFromNPosition(myStruct **head, int nPosition)
 {
-    myStruct *current = *head, *previous = *head;
+    myStruct *current = *head, *next;
     int currentPosition = 1;
 
     if(*head==NULL) {
@@ -115,18 +115,17 @@ int deleteNodeFromNPosition(myStruct **head, int nPosition)
 
     // Go to nPosition
     while ( (current->next != NULL) && (currentPosition < nPosition)) { // Go to the nPosition
-        previous = current;
         current = current->next;
         currentPosition++;
     }
 
-    // Delete the node. Previous node points to next of the current
-    if(currentPosition == nPosition) {
-        previous->next = current->next;
-        free(current);
-    } else {
-        return 0;
-    }
+    next = current->next; // Get the next node
+
+    // Copy next to current
+    current->data = next->data;
+    current->next = next->next;
+
+    free(next); // Delete next
 
     return 1;
 
@@ -149,7 +148,7 @@ int main()
 
     displayList(&head);
 
-    deleteNodeFromNPosition(&head, 2);
+    deleteNodeFromNPosition(&head, 3);
 
     displayList(&head);
 
