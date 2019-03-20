@@ -114,7 +114,7 @@ int deleteNodeFromNPosition(myStruct **head, int nPosition)
     }
 
     // Go to nPosition
-    while ( (current->next != NULL) && (currentPosition < nPosition)) { // Go to the nPosition
+    while ( (current->next != NULL) && (currentPosition < nPosition)) {
         previous = current;
         current = current->next;
         currentPosition++;
@@ -130,6 +130,37 @@ int deleteNodeFromNPosition(myStruct **head, int nPosition)
     } else { // If current is the last node
         // Previous points to NULL and delete current node
         previous->next = NULL;
+        free(current);
+    }
+
+    return 1;
+}
+
+/**
+ * Search for hay and delete the node
+ *
+ * @param head
+ * @param hay
+ * @return
+ */
+int searchElementAndDeleteNode(myStruct **head, DataElementType hay)
+{
+    myStruct *current = *head, *next, *previous = *head;
+
+    if(*head==NULL) {
+        return 0;
+    }
+
+    // Search for element
+    while ( (current->next != NULL) && (current->data != hay)) {
+        previous = current;
+        current = current->next;
+    }
+
+    // If element founded
+    if(current->data == hay) {
+        // Previous point to next node of current and delete current
+        previous->next = current->next;
         free(current);
     }
 
@@ -153,7 +184,8 @@ int main()
 
     displayList(&head);
 
-    deleteNodeFromNPosition(&head, 4);
+//    deleteNodeFromNPosition();
+    searchElementAndDeleteNode(&head, 21);
 
     displayList(&head);
 
