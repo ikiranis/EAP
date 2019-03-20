@@ -97,6 +97,37 @@ void displayList(myStruct **head)
     printf("\n");
 }
 
+/**
+ * Delete node from n position of the list
+ *
+ * @param head
+ * @param nPosition
+ * @return
+ */
+int deleteNodeFromNPosition(myStruct **head, int nPosition)
+{
+    myStruct *current = *head, *previous = *head;
+    int currentPosition = 1;
+
+    if(*head==NULL) {
+        return 0;
+    }
+
+    // Go to nPosition
+    while ( (current->next != NULL) && (currentPosition < nPosition)) { // Go to the nPosition
+        previous = current;
+        current = current->next;
+        currentPosition++;
+    }
+
+    // Delete the node
+    previous->next = current->next;
+    free(current);
+
+    return 1;
+
+}
+
 
 int main()
 {
@@ -113,6 +144,11 @@ int main()
     insertAtTheEnd(&head, 21);
 
     displayList(&head);
+
+    deleteNodeFromNPosition(&head, 2);
+
+    displayList(&head);
+
 
     return 0;
 }
