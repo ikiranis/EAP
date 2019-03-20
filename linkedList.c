@@ -120,18 +120,20 @@ int deleteNodeFromNPosition(myStruct **head, int nPosition)
         currentPosition++;
     }
 
-    next = current->next; // Get the next node
+    // If current is NOT the last node
+    if(current->next != NULL) {
+        next = current->next; // Get the next node
 
-    if(next != NULL) { // If current is NOT the last node
-        *current = *next; // Copy next to current
-        free(next); // Delete next
+        // Copy next to current and delete
+        *current = *next;
+        free(next);
     } else { // If current is the last node
         // Previous points to NULL and delete current node
         previous->next = NULL;
         free(current);
     }
-    return 1;
 
+    return 1;
 }
 
 
@@ -151,7 +153,7 @@ int main()
 
     displayList(&head);
 
-    deleteNodeFromNPosition(&head, 3);
+    deleteNodeFromNPosition(&head, 4);
 
     displayList(&head);
 
