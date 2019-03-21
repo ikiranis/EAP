@@ -23,6 +23,20 @@ typedef struct list {
     struct list *next;
 } myStruct;
 
+/**
+ * Return 1 if list is empty
+ *
+ * @param head
+ * @return
+ */
+int isEmpty(myStruct **head)
+{
+    if(*head==NULL) {
+        return 1;
+    }
+
+    return 0;
+}
 
 /**
  * Insert new node at the start of the list
@@ -195,6 +209,17 @@ DataElementType searchForElement(myStruct **head, DataElementType hay)
 
     if(current->data == hay) {
         return position;
+    }
+
+}
+
+int countForItems(myStruct **head, DataElementType hay)
+{
+    myStruct *current = *head;
+    int counter = 0;
+
+    if(*head==NULL) {
+        return 0;
     }
 
 }
