@@ -171,10 +171,39 @@ int searchElementAndDeleteNode(myStruct **head, DataElementType hay)
     return 1;
 }
 
+/**
+ * Search element in list and return the position
+ *
+ * @param head
+ * @param hay
+ * @return
+ */
+DataElementType searchForElement(myStruct **head, DataElementType hay)
+{
+    myStruct *current = *head;
+    int position = 1;
+
+    if(*head==NULL) {
+        return 0;
+    }
+
+    // Search for element
+    while ( (current->next != NULL) && (current->data != hay)) {
+        current = current->next;
+        position++;
+    }
+
+    if(current->data == hay) {
+        return position;
+    }
+
+}
+
 
 int main()
 {
     myStruct *head = NULL;
+    int searchedPosition;
 
 //    insertAtStart(&head, 10);
 //    insertAtStart(&head, 40);
@@ -189,9 +218,14 @@ int main()
     displayList(&head);
 
 //    deleteNodeFromNPosition();
-    searchElementAndDeleteNode(&head, 24);
+//    searchElementAndDeleteNode(&head, 24);
 
-    displayList(&head);
+    if( (searchedPosition = searchForElement(&head, 21)) ) {
+        printf("Element founded in %d position", searchedPosition);
+    }
+
+
+//    displayList(&head);
 
 
     return 0;
