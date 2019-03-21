@@ -17,6 +17,8 @@
 typedef int DataElementType;
 const char DETERMINANT[] = "%d ";
 
+#define ARRAY_LENGTH 12
+
 // Main node structure
 typedef struct list {
     DataElementType data;
@@ -250,24 +252,40 @@ int countForItems(myStruct **head, DataElementType hay)
 
 }
 
+/**
+ * Copy array items to a list
+ *
+ * @param array
+ * @param head
+ */
+void copyArrayToList(DataElementType array[], myStruct **head, int arrayLength)
+{
+    int i;
+
+    for(i=0; i<arrayLength; i++) {
+        insertAtTheEnd(head, array[i]);
+    }
+}
+
 
 int main()
 {
     myStruct *head = NULL;
     int searchedPosition, searchedElements;
+    DataElementType array[ARRAY_LENGTH] = {1,5,4,10,45,23,43,32,24,23,12,65};
 
 //    insertAtStart(&head, 10);
 //    insertAtStart(&head, 40);
 //    insertAtStart(&head, 5);
 //    insertAtStart(&head, 12);
 
-    insertAtTheEnd(&head, 34);
-    insertAtTheEnd(&head, 24);
-    insertAtTheEnd(&head, 21);
-    insertAtTheEnd(&head, 13);
-    insertAtTheEnd(&head, 21);
-
-    displayList(&head);
+//    insertAtTheEnd(&head, 34);
+//    insertAtTheEnd(&head, 24);
+//    insertAtTheEnd(&head, 21);
+//    insertAtTheEnd(&head, 13);
+//    insertAtTheEnd(&head, 21);
+//
+//    displayList(&head);
 
 //    deleteNodeFromNPosition();
 //    searchElementAndDeleteNode(&head, 24);
@@ -276,12 +294,13 @@ int main()
 //        printf("Element founded in %d position", searchedPosition);
 //    }
 
-    if( (searchedElements = countForItems(&head, 21)) ) {
-        printf("Element founded %d times", searchedElements);
-    }
+//    if( (searchedElements = countForItems(&head, 21)) ) {
+//        printf("Element founded %d times", searchedElements);
+//    }
 
-//    displayList(&head);
+    copyArrayToList(array, &head, ARRAY_LENGTH);
 
+    displayList(&head);
 
     return 0;
 }
