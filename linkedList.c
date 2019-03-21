@@ -98,9 +98,13 @@ int insertAtTheEnd(myStruct **head, DataElementType data)
  *
  * @param head
  */
-void displayList(myStruct **head)
+int displayList(myStruct **head)
 {
     myStruct *current = *head;
+
+    if(isEmpty(head)) {
+        return 0;
+    }
 
     // Scan all the list nodes until the end (NULL)
     while(current!=NULL) {
@@ -109,6 +113,8 @@ void displayList(myStruct **head)
     }
 
     printf("\n");
+
+    return 0;
 }
 
 /**
@@ -123,7 +129,7 @@ int deleteNodeFromNPosition(myStruct **head, int nPosition)
     myStruct *current = *head, *next, *previous = *head;
     int currentPosition = 1;
 
-    if(*head==NULL) {
+    if(isEmpty(head)) {
         return 0;
     }
 
@@ -161,7 +167,7 @@ int searchElementAndDeleteNode(myStruct **head, DataElementType hay)
 {
     myStruct *current = *head, *previous = *head;
 
-    if(*head==NULL) {
+    if(isEmpty(head)) {
         return 0;
     }
 
@@ -197,7 +203,7 @@ DataElementType searchForElement(myStruct **head, DataElementType hay)
     myStruct *current = *head;
     int position = 1;
 
-    if(*head==NULL) {
+    if(isEmpty(head)) {
         return 0;
     }
 
@@ -211,6 +217,8 @@ DataElementType searchForElement(myStruct **head, DataElementType hay)
         return position;
     }
 
+    return 0;
+
 }
 
 int countForItems(myStruct **head, DataElementType hay)
@@ -222,6 +230,7 @@ int countForItems(myStruct **head, DataElementType hay)
         return 0;
     }
 
+    return 1;
 
 }
 
