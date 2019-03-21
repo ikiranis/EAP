@@ -221,6 +221,13 @@ DataElementType searchForElement(myStruct **head, DataElementType hay)
 
 }
 
+/**
+ * Search how many times an element exist in a list
+ *
+ * @param head
+ * @param hay
+ * @return
+ */
 int countForItems(myStruct **head, DataElementType hay)
 {
     myStruct *current = *head;
@@ -230,7 +237,16 @@ int countForItems(myStruct **head, DataElementType hay)
         return 0;
     }
 
-    return 1;
+    // Search for element
+    while (current->next != NULL) {
+        current = current->next;
+
+        if(current->data == hay) {
+            counter++;
+        }
+    }
+
+    return counter;
 
 }
 
@@ -238,7 +254,7 @@ int countForItems(myStruct **head, DataElementType hay)
 int main()
 {
     myStruct *head = NULL;
-    int searchedPosition;
+    int searchedPosition, searchedElements;
 
 //    insertAtStart(&head, 10);
 //    insertAtStart(&head, 40);
@@ -247,6 +263,7 @@ int main()
 
     insertAtTheEnd(&head, 34);
     insertAtTheEnd(&head, 24);
+    insertAtTheEnd(&head, 21);
     insertAtTheEnd(&head, 13);
     insertAtTheEnd(&head, 21);
 
@@ -255,10 +272,13 @@ int main()
 //    deleteNodeFromNPosition();
 //    searchElementAndDeleteNode(&head, 24);
 
-    if( (searchedPosition = searchForElement(&head, 21)) ) {
-        printf("Element founded in %d position", searchedPosition);
-    }
+//    if( (searchedPosition = searchForElement(&head, 21)) ) {
+//        printf("Element founded in %d position", searchedPosition);
+//    }
 
+    if( (searchedElements = countForItems(&head, 21)) ) {
+        printf("Element founded %d times", searchedElements);
+    }
 
 //    displayList(&head);
 
