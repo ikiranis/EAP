@@ -218,9 +218,10 @@ int countForItems(myStruct **head, DataElementType hay)
     myStruct *current = *head;
     int counter = 0;
 
-    if(*head==NULL) {
+    if(isEmpty(head)) {
         return 0;
     }
+
 
 }
 
