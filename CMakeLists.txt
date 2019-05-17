@@ -15,3 +15,4 @@ add_executable(displayStringOnlyWithLatinChars displayStringOnlyWithLatinChars.c
 add_executable(temp temp.c)
 add_executable(stackList stackList.c)
 add_executable(linkedList linkedList.c)
+add_executable(seriesListWithStep4 seriesListWithStep4.c)
